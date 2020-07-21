@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    background: url('../img/f1.png') ;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+}
+a { text-decoration:none;}
+
+.contenedor {
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    height: 100%;
+    display: flexbox;
+    align-items: center;
+        
+}
+
+.tarjeta {
+
+    background-color: #ffffff;
+    margin: 40px 0;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+}
+/* slider banner */ 
+
+.slider_banner {
+    overflow: hidden;
+    z-index: 1000;
+    position: relative;
+}
+   
+.slider_banner .banner {
+    position: relative;
+    width: 100%;
+}
+
+.slider_banner .banner img{
+    vertical-align: top;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+}

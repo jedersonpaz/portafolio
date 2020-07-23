@@ -215,6 +215,7 @@ $(document).ready(function (){
         altoInfo();
        
 
+        
     });
 
 });

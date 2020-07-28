@@ -25,7 +25,7 @@ $(document).ready(function (){
         banner.padre.css({
             'height': alto + 'px'
         })
-        console.log(alto);
+        
 
     }
     var altoInfo = function(){
@@ -33,18 +33,41 @@ $(document).ready(function (){
 
         info.padre.animate({
             'height': alto + 'px'
-        })
-        console.log(alto);
-
+        });
+        
     }
+
+    var altocontenedor =function(){
+        var altoVentana = $(window).height();
+
+        if (altoVentana <= $('#contenedor').outerHeight() + 200) {
+            $('#contenedor').css({
+                'height' : ''
+            });
+
+        } else {
+            $('#contenedor').css({
+                'height' : altoVentana + 'px'
+        });
+    }
+}
     altoBanner();
     altoInfo();
-
+    altocontenedor();
+    
     $(window).resize(function(){
         altoBanner();
         altoInfo();
+        altocontenedor();
+    });
+
+    $('#info').children('.slide').each(function(){
+        $('#botones').append('<span>');
 
     });
+
+    $('#botones').children('span').first().addClass('active');
+
 //-----------------
 // ----- banner
 // ----------------   
@@ -59,7 +82,7 @@ $(document).ready(function (){
             });
 
             $('#banner .active').removeClass('active').next().addClass('active').animate({
-                'left': '0'
+                'left': 0
             });
 
             $('#banner .active').prev().animate({
@@ -80,7 +103,7 @@ $(document).ready(function (){
 
             $('#banner .active').removeClass('active');
             banner.padre.children('.slide').first().addClass('active').animate({
-                'left': '0'
+                'left': 0
             });
 
             banner.posicion = 1;
@@ -143,12 +166,14 @@ $(document).ready(function (){
             });
 
             $('#info .active').removeClass('active').next().addClass('active').animate({
-                'left': '0'
+                'left': 0
             });
 
             $('#info .active').prev().animate({
                 'left' : '-100%'
             });
+
+            $('#botones').children('.active').removeClass('active').next().addClass('active');
 
             info.posicion = info.posicion + 1;
 
@@ -164,8 +189,11 @@ $(document).ready(function (){
 
             $('#info .active').removeClass('active');
             info.padre.children('.slide').first().addClass('active').animate({
-                'left': '0'
+                'left': 0
             });
+
+            $('#botones').children('.active').removeClass('active');
+            $('#botones').children('span').first().addClass('active');
 
             info.posicion = 1;
         }
@@ -193,6 +221,8 @@ $(document).ready(function (){
                 'left': 0
             });
 
+            $('#botones').children('.active').removeClass('active').prev().addClass('active');
+
             info.posicion = info.posicion - 1;
             
         } else {
@@ -207,6 +237,10 @@ $(document).ready(function (){
             info.padre.children().last().addClass('active').animate({
                 'left': 0
             });
+
+            $('#botones').children('.active').removeClass('active');
+            $('#botones').children('span').last().addClass('active');
+
 
             info.posicion = info.numeroSlides;
 
